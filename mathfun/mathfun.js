@@ -4,9 +4,7 @@
 
 console.clear();
 window.prompt("")
-function mathFun() {
-
-  //Declaring Variables
+//------------------------------------ Declaring Variables
   var mean;
   var sum;
   var med;
@@ -19,97 +17,88 @@ function mathFun() {
   var num = "";
   var numarr = new Array();
 
-//Beginning of Prompt
+//----------------------------------------------- Beginning of Prompt
   while (num != '-1') {
     num = +prompt("Enter a set of positive numbers seperated by commas!", "Enter -1 when you are finished.").split(",");
     //Parses string
     numarr.push(Number(num)); // Pushes into the array as ints
   }
+//Getting the Array into order and excluding the -1.
+  numarr.pop(); //Must remove last element since it was a -1.
+  numarr.sort(function(a,b) { return a-b});  //Set the list of numbers into ascending order, was stolen from w3schools, but makes sense.
 
-  //Must remove last element since it was a -1.
-  numarr.pop();
+  //saftey
+  console.log(num); //Prints the sequence entered
+  console.log(numarr) //prints sorted array
 
-  //Set the list of numbers into ascending order, was stolen
-  //from w3schools, but makes sense.
-  numarr.sort(function(a,b) { return a-b});
-  console.log(num); //Prints the sequence
-
-// ----  Finding the Mean ------ \\
+//---------------------------------------------------- Mean Function
+function mean(numarr) {
   sum = 0;
   for (var i = 0; i < num.length; i++;) {
     sum = sum + numarr[i];
   }
   mean = sum/num.length;
+  return mean;
+}
 
-  //safety
-  console.log("Array Length: " + num.length);
-  console.log("Sum: " + sum);
-  console.log("Mean: " + mean);
-  document.getElementById('mean') = mean;
+//------------------------------------------------  Median Function
 
-
-
-
-// ----  Finding the Median ------ \\
+function median(numarr) {
   var medIndex = 0;
-  //Mod division will split the sorted array in half
-  if (num.length % 2 !=0)
+  if (num.length % 2 !=0) //Mod division will split the sorted array in half
   {
-    //this next function grabs the index of the closest
-    medIndex = Math.floor(num.length / 2);
+    medIndex = Math.floor(num.length / 2);//This next function grabs the index of the closest
     med = numarr[medIndex];
   }
   else if(num.length % 2 == 0)
   {
-
+    med = (numarr[i] + numarr[index-1]) / 2;//Returns an average if the num.length is even.
   }
-
+  return med;
 }
 
+//------------------------------------------------ Maximum Function
 
+function Max(numaar) {
+  max = numarr[0];
+  return max;
+}
 
+//------------------------------------------------ Minimum Function
 
+function Min(numarr) {
 
+  min = numarr[numarr.length-1];
 
-// fuction findPrime()
-//
-//
-//
-//
-// // Part 1
-// // ---------------------------------------------
-// var divNode = document.getElementById("mathfun");
-// var tbldivNode = document.getElementById("prettytable");
-// // ---------------------------------------------
-//
-//
-// // ---------------------------------------------
-// var tNode = document.createElement("table");
-//
-// var tNode = document.createCaption("Math Fun!");
-//
-// var tNode = document.createTHead("Below is your requested math outputs!");
-//
-// // ---------------------------------------------
-//
-// // Insert an output node/ table node
-// //  Finish table, create the actual functions dumbass
-//
-// // ---------------------------------------------
-// var hrNode = document.createElement("hr");
-// divNode.appendChild(hrNode);
-// // ---------------------------------------------
-//
-//
-//
-//
-// // ---------------------------------------------
-//   var imgNode = document.createElement("img");
-//   var srcAttr = document.createAttribute("src");
-//   srcAttr.value= "http://munsellb.people.cofc.edu/img/prettypicture.jpg";
-//   imgNode.setAttributeNode(srcAttr);
-//   divNode.appendChild(imgNode);
-//
-//
-//
-// // ---------------------------------------------
+  return min;
+}
+
+//------------------------------------------------ Even Function
+
+function Even(numarr) {
+  for( i = 0; i < numarr.length; i++) {
+    if()
+  }
+
+  return evens;
+}
+
+//------------------------------------------------ Odd Function
+
+function Odd(numarr) {
+
+  return odds;
+}
+
+//------------------------------------------------ Squares Function
+
+function Squares(numarr) {
+
+  return squares;
+}
+//------------------------------------------------ Primes Function
+
+function Primes(numarr) {
+
+return primes;
+}
