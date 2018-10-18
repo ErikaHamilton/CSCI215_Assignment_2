@@ -13,7 +13,7 @@ window.prompt("")
   var evens;
   var odds;
   var primes;
-  var squares;
+  var power2;
   var num = "";
   var numarr = new Array();
 
@@ -77,24 +77,57 @@ function Min(numarr) {
 
 function Even(numarr) {
   for( i = 0; i < numarr.length; i++) {
-    if()
-  }
+    check = numarr[i] % 2;
 
-  return evens;
+    if(check == 0) {
+    evens =+ 1;
+    }
+
+    else {
+      //Doesn't count a number if it's not even
+      //I felt uncomfortable leaving this blank, so enjoy this pointless statement
+      evens = evens + 0;
+    }
 }
+  return evens;
 
 //------------------------------------------------ Odd Function
 
 function Odd(numarr) {
+  for( i = 0; i < numarr.length; i++) {
+    check = numarr[i] % 2;
+
+    if(check != 0) {
+    odds =+ 1;
+    }
+
+    else {
+      //Doesn't count a number if it's not even
+      //I felt uncomfortable leaving this blank, so enjoy this pointless statement
+      odds = odds + 0;
+    }
+}
 
   return odds;
 }
 
-//------------------------------------------------ Squares Function
+//------------------------------------------------ Powers of 2 Function
 
-function Squares(numarr) {
+function powertwo(numarr) {
+  for( i = 0; i < numarr.length; i++) {
+    x = numarr[i];
+  //  checkval = Math.pow(2, x);
+    rootval = Math.pow(x, 1/x);
 
-  return squares;
+    if(rootval == 2) {
+      power2 =+ 1;
+    }
+
+    else {
+    }
+}
+
+  return power2;
 }
 //------------------------------------------------ Primes Function
 
