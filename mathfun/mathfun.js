@@ -3,7 +3,7 @@
 // Assignment 2
 
 console.clear();
-window.prompt("")
+function Prompt () {
 //------------------------------------ Declaring Variables
   var mean;
   var sum;
@@ -18,9 +18,9 @@ window.prompt("")
   var numarr = new Array();
 
 //----------------------------------------------- Beginning of Prompt
+//do while?
   while (num != '-1') {
-    num = +prompt("Enter a set of positive numbers seperated by commas!", "Enter -1 when you are finished.").split(",");
-    //Parses string
+    num = +prompt("Enter a set of positive numbers, Enter -1 when you are finished.");
     numarr.push(Number(num)); // Pushes into the array as ints
   }
 //Getting the Array into order and excluding the -1.
@@ -29,12 +29,30 @@ window.prompt("")
 
   //saftey
   console.log(num); //Prints the sequence entered
-  console.log(numarr) //prints sorted array
+  console.log(numarr); //prints sorted array
+
+  //Delete this all eventually, half of it is useless,
+  // var max = Max(numarr);
+  // var min = Min(numarr);
+  // var med = Median(numarr);
+  // var mean = Mean(numarr);
+  // var odds = Odd(numarr);
+  // var evens = Even(numarr);
+  // var primes = Primes(numarr);
+  // var power2 = PowerTwo(numarr);
+  // console.log("The max is:", max);
+  // console.log("The min is:", min);
+  // console.log("The med is:", med);
+  // console.log("The mean is:", mean);
+  // console.log("The odd count is:", odds);
+  // console.log("The even count is:", evens);
+  // console.log("The primes count is:", primes);
+  // console.log("The powers count is:", power2);
 
 //---------------------------------------------------- Mean Function
-function mean(numarr) {
+function Mean(numarr) {
   sum = 0;
-  for (var i = 0; i < num.length; i++;) {
+  for (var i = 0; i < num.length; i++) {
     sum = sum + numarr[i];
   }
   mean = sum/num.length;
@@ -43,7 +61,7 @@ function mean(numarr) {
 
 //------------------------------------------------  Median Function
 
-function median(numarr) {
+function Median(numarr) {
   var medIndex = 0;
   if (num.length % 2 !=0) //Mod division will split the sorted array in half
   {
@@ -60,15 +78,14 @@ function median(numarr) {
 //------------------------------------------------ Maximum Function
 
 function Max(numaar) {
-  max = numarr[0];
+  max = numarr[numarr.length-1];
   return max;
 }
 
 //------------------------------------------------ Minimum Function
 
 function Min(numarr) {
-
-  min = numarr[numarr.length-1];
+  min = numarr[0];
 
   return min;
 }
@@ -77,35 +94,30 @@ function Min(numarr) {
 
 function Even(numarr) {
   for( i = 0; i < numarr.length; i++) {
-    check = numarr[i] % 2;
+    // check = numarr[i] % 2;
 
-    if(check == 0) {
-    evens =+ 1;
+    if((numarr[i] % 2) == 0) {
+
+    evens = evens + 1;
+
     }
 
-    else {
-      //Doesn't count a number if it's not even
-      //I felt uncomfortable leaving this blank, so enjoy this pointless statement
-      evens = evens + 0;
-    }
+    else { //it's odd
+  }
 }
   return evens;
-
+}
 //------------------------------------------------ Odd Function
 
 function Odd(numarr) {
-  for( i = 0; i < numarr.length; i++) {
+  for( i = 1; i < numarr.length; i++) {
     check = numarr[i] % 2;
 
     if(check != 0) {
     odds =+ 1;
     }
 
-    else {
-      //Doesn't count a number if it's not even
-      //I felt uncomfortable leaving this blank, so enjoy this pointless statement
-      odds = odds + 0;
-    }
+    else {}
 }
 
   return odds;
@@ -113,10 +125,9 @@ function Odd(numarr) {
 
 //------------------------------------------------ Powers of 2 Function
 
-function powertwo(numarr) {
+function PowerTwo(numarr) {
   for( i = 0; i < numarr.length; i++) {
     x = numarr[i];
-  //  checkval = Math.pow(2, x);
     rootval = Math.pow(x, 1/x);
 
     if(rootval == 2) {
@@ -132,6 +143,33 @@ function powertwo(numarr) {
 //------------------------------------------------ Primes Function
 
 function Primes(numarr) {
-
+  for( i = 0; i < numarr.length; i++) {
+    x = numarr[i];
+    // div2 = x % 2;
+    fsquare = Math.floor(Math.sqrt(numarr));
+    //Prime iff it is not div. by any prime <= its square root
+    for(x > 2; i <= fsquare; i++) {
+      if(x % i == 0){
+      //It's not prime, so we will count when it is
+    }
+      else {
+        primes =+ 1;
+        //it is prime
+      }
+    }
+  }
 return primes;
+}
+
+//------------------------------------------------ Putting it all into html
+document.getElementById("seq").innerHTML = "[" + numarr + "]";
+document.getElementById("max").innerHTML = Max(numarr);
+document.getElementById("min").innerHTML = Min(numarr);
+document.getElementById("med").innerHTML = Median(numarr);
+document.getElementById("mean").innerHTML = Mean(numarr);
+document.getElementById("odds").innerHTML = Odd(numarr);
+document.getElementById("evens").innerHTML = Even(numarr);
+document.getElementById("primes").innerHTML = Primes(numarr);
+document.getElementById("power2").innerHTML = PowerTwo(numarr);
+
 }
