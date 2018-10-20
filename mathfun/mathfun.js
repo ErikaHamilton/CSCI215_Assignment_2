@@ -32,22 +32,22 @@ function Prompt () {
   console.log(numarr); //prints sorted array
 
   //Delete this all eventually, half of it is useless,
-  // var max = Max(numarr);
-  // var min = Min(numarr);
-  // var med = Median(numarr);
-  // var mean = Mean(numarr);
-  // var odds = Odd(numarr);
-  // var evens = Even(numarr);
-  // var primes = Primes(numarr);
-  // var power2 = PowerTwo(numarr);
-  // console.log("The max is:", max);
-  // console.log("The min is:", min);
-  // console.log("The med is:", med);
-  // console.log("The mean is:", mean);
-  // console.log("The odd count is:", odds);
-  // console.log("The even count is:", evens);
-  // console.log("The primes count is:", primes);
-  // console.log("The powers count is:", power2);
+  var max = Max(numarr);
+  var min = Min(numarr);
+  var med = Median(numarr);
+  var mean = Mean(numarr);
+  var odds = Odd(numarr);
+  var evens = Even(numarr);
+  var primes = Primes(numarr);
+  var power2 = PowerTwo(numarr);
+  console.log("The max is:", max);
+  console.log("The min is:", min);
+  console.log("The med is:", med);
+  console.log("The mean is:", mean);
+  console.log("The odd count is:", odds);
+  console.log("The even count is:", evens);
+  console.log("The primes count is:", primes);
+  console.log("The powers count is:", power2);
 
 //---------------------------------------------------- Mean Function
 function Mean(numarr) {
@@ -56,7 +56,7 @@ function Mean(numarr) {
     sum = sum + numarr[i];
   }
   mean = sum/num.length;
-  return mean;
+  return Math.floor(mean);
 }
 
 //------------------------------------------------  Median Function
@@ -72,7 +72,7 @@ function Median(numarr) {
   {
     med = (numarr[i] + numarr[index-1]) / 2;//Returns an average if the num.length is even.
   }
-  return med;
+  return Math.floor(med);
 }
 
 //------------------------------------------------ Maximum Function
