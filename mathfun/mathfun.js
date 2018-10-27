@@ -52,10 +52,11 @@ function Prompt () {
 //---------------------------------------------------- Mean Function
 function Mean(numarr) {
   sum = 0;
-  for (var i = 0; i < num.length; i++) {
+  for (var i = 0; i < numarr.length; i++) {
     sum = sum + numarr[i];
   }
-  mean = sum/num.length;
+  mean = 0;
+  mean = sum/numarr.length;
   return Math.floor(mean);
 }
 
@@ -63,12 +64,14 @@ function Mean(numarr) {
 
 function Median(numarr) {
   var medIndex = 0;
-  if (num.length % 2 !=0) //Mod division will split the sorted array in half
+  if ((numarr.length % 2) !=0) //Mod division will split the sorted array in half
   {
-    medIndex = Math.floor(num.length / 2);//This next function grabs the index of the closest
+    medIndex = 0;
+    med = 0;
+    medIndex = Math.floor(numarr.length / 2);//This next function grabs the index of the closest
     med = numarr[medIndex];
   }
-  else if(num.length % 2 == 0)
+  else if(numarr.length % 2 == 0)
   {
     med = (numarr[i] + numarr[index-1]) / 2;//Returns an average if the num.length is even.
   }
@@ -98,7 +101,7 @@ function Even(numarr) {
 
     if((numarr[i] % 2) == 0) {
 
-    evens = evens + 1;
+    evens += 1;
 
     }
 
@@ -114,7 +117,7 @@ function Odd(numarr) {
     check = numarr[i] % 2;
 
     if(check != 0) {
-    odds =+ 1;
+    odds += 1;
     }
 
     else {}
