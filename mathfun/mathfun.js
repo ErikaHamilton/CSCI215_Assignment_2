@@ -15,15 +15,13 @@ function Prompt () {
   numarr.pop();
   numarr.sort(function(a,b) { return a-b});  //Set the list of numbers into ascending order, was stolen from w3schools, but makes sense.
 
-//----------------------------------------------- FLAGS
-  console.log(numarr); //prints sorted array
 //----------------------------------------------- Function Calls
   document.getElementById("seq").innerHTML = "[" + numarr + "]";
   var max = Max(numarr);
   var min = Min(numarr);
   var med = Median(numarr);
   var mean = Mean(numarr);
-  // var odds = Odd(numarr);
+  var odds = Odd(numarr);
   var evens = Even(numarr);
   var primes = Primes(numarr);
   var power2 = PowerTwo(numarr);
@@ -34,25 +32,20 @@ function Prompt () {
 function Mean(numarr) {
   var sum = 0;
   for (var i = 0; i < numarr.length; i++) {
-    sum = sum + numarr[i];
+    sum = sum + parseInt(numarr[i]);
   }
-  console.log("total sum: " + sum);
   var mean = 0;
   mean = sum / numarr.length;
-
   mean = Math.floor(mean);
   document.getElementById("mean").innerHTML = mean;
-  return mean;
 }
 
 //------------------------------------------------  Median Function
 
 function Median(numarr) {
     var medIndex = Math.floor(numarr.length / 2);//This next function grabs the index of the closest
-    var med = numarr[medIndex];
-    med = med[medIndex];
+    var med = parseInt(numarr[medIndex]);
     document.getElementById("med").innerHTML = med;
- return med;
 }
 
 //------------------------------------------------ Maximum Function
@@ -60,7 +53,6 @@ function Median(numarr) {
 function Max(numarr) {
   var max = numarr[numarr.length-1];
   document.getElementById("max").innerHTML = max;
-  return max;
 }
 
 //------------------------------------------------ Minimum Function
@@ -68,90 +60,83 @@ function Max(numarr) {
 function Min(numarr) {
   var min = numarr[0];
   document.getElementById("min").innerHTML = min;
-  return min;
 }
 
 //------------------------------------------------ Even Function
 
 function Even(numarr) {
   var elementCt = numarr.length;
-  console.log("Array Length:" +elementCt);
+  var evenCt = 0;
   for(var i = 0; i < elementCt; i++) {
-    var check = numarr[i] % 2;
+    var check = parseInt(numarr[i]) % 2;
     if(check == 0) {
-      var evenCt = evenCt + 1;
-      console.log("Evens:" + evenCt);
-
+      evenCt = evenCt + 1;
     }
-
-    else {
-
-  }
 }
   document.getElementById("evens").innerHTML = evenCt;
 
-  return evenCt;
 }
 // //------------------------------------------------ Odd Function
 
-function Odd(numarr) {
+function Odd(numarr) { //good.
   var elementCt = numarr.length;
-  for(var i = 1; i < elementCt; i++) {
-    var check = numarr[i] % 2;
+  var oddsCt = 0;
+  for(var i = 0; i < elementCt; i++) {
+    var check = parseInt(numarr[i]) % 2 ;
     if(check != 0) {
-    var  oddsCt = oddsCt + 1;
-    }
-    console.log("Odds: " + oddsCt);
-
-    else {
-
+    oddsCt = oddsCt + 1;
     }
 }
 
-  document.getElementById("odds").innerHTML = oddCt;
-  return oddCt;
+  document.getElementById("odds").innerHTML = oddsCt;
 }
 
 //------------------------------------------------ Powers of 2 Function
 
 function PowerTwo(numarr) {
   var elementCt = numarr.length;
-  for(var i = 0; i < elementCt; i++) {
-    var x = numarr[i];
-    var rootval = Math.pow(x, 1/x);
-
-    if(rootval == 2) {
-      var power2Ct = power2Ct + 1;
+  var x = 0;
+  var power2Ct= 0;
+  check = 0;
+  for(var i = 0; i <= elementCt; i++) {
+    p = parseInt(numarr[i]);
+    check = Math.log2(p);
+    if(Number.isInteger(check) && (p > 0)) {
+      power2Ct = power2Ct + 1;
     }
-
-    else {
-    }
-}
+  }
 
   document.getElementById("power2").innerHTML= power2Ct;
-
-  return power2Ct;
 }
+
 //------------------------------------------------ Primes Function
 
 function Primes(numarr) {
   var elementCt = numarr.length;
+  var fsquare = 0;
+  var primeCt = 0;
   for(var i = 0; i < elementCt; i++) {
-    var x = numarr[i];
-    // div2 = x % 2;
-    var fsquare = Math.floor(Math.sqrt(x));
-    //Prime iff it is not div. by any prime <= its square root
-    for(x > 2; i <= fsquare; i++) {
-      if(x % i == 0){
-      //It's not prime, so we will count when it is
+    var x = parseInt(numarr[i]);
+    fsquare = Math.floor(Math.sqrt(x));
+//Thm: prime iff it is not div. by any prime <= its square root
+    if (x == 0 || x == 1 || x == 2 || x == 3){
+        primeCt ++;
     }
-      else {
-        var primeCt =+ 1;
-        //it is prime
+    else if (x > 1){
+      var x_is_div_by_j = false; // assume prime
+      for(var j = 2; j <= fsquare; j++) {
+        if(x % j != 0){
+          //not divisible by j, keep going
+        }
+        else {
+          x_is_div_by_j = true;
+          break;
+        }
+      }
+        if (x_is_div_by_j) {
+          primeCt++;
+        }
       }
     }
+    document.getElementById("primes").innerHTML = primeCt;
   }
- document.getElementById("primes").innerHTML = primeCt;
-
- return primeCt;
-}
